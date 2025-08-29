@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  min-height: 100vh;
+  width: 100vw;
+background-image: linear-gradient(to top, #393d44, #2e343c, #242b35, #19232d, #0d1b26);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+.blur-text-nama {
+  position: absolute;
+  display: flex;
+  flex-direction: column; /* sekarang urut atas-bawah */
+  align-items: center;
+  min-height: 100vh;
+  gap: 2rem;
+  bottom: -50px;
+}
+
+.blur-text-nama{
+  transform: translateY(-50%);
+}
+
+
+.custom-text{
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-size: 35px;
+  font-family: 'Lucida Sans', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+.glare-hover {
+  --gh-width: 1px;   /* atur sesuai kebutuhan */
+  --gh-height: 100px;  /* kecilin biar pas kaya garis putih */
+  --gh-bg: black;
+  --gh-br: 12px;
+  --gh-border: #222;
+  --gh-rgba: rgba(255, 255, 255, 0.15);
+  --gh-duration: 0.6s;
+  --gh-size: 200%;
+
+  width: var(--gh-width);
+  height: var(--gh-height);
+  background: var(--gh-bg);
+  border-radius: var(--gh-br);
+  border: 1px solid var(--gh-border);
+  overflow: hidden;
+  position: absolute;     /* biar bisa dipindah bebas */
+  top: 50%;               /* posisinya tengah secara vertikal */
+  right: 55px;           /* geser dari kanan sesuai garis putih */
+  transform: translateY(-50%); /* biar bener-bener center */
+  display: grid;
+  place-items: center;
+}
+
+.glare-hover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(var(--gh-angle),
+      hsla(0, 0%, 0%, 0) 60%,
+      var(--gh-rgba) 70%,
+      hsla(0, 0%, 0%, 0),
+      hsla(0, 0%, 0%, 0) 100%);
+  transition: var(--gh-duration) ease;
+  background-size: var(--gh-size) var(--gh-size), 100% 100%;
+  background-repeat: no-repeat;
+  background-position: -100% -100%, 0 0;
+}
+
+.glare-hover:hover {
+  cursor: pointer;
+}
+
+.glare-hover:hover::before {
+  background-position: 100% 100%, 0 0;
+}
+
+.glare-hover--play-once::before {
+  transition: none;
+}
+
+.glare-hover--play-once:hover::before {
+  transition: var(--gh-duration) ease;
+  background-position: 100% 100%, 0 0;
+}
+
+.curved-loop-jacket {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+
+
+.curved-loop-svg {
+  user-select: none;
+  width: 100%;
+  aspect-ratio: 100 / 12;
+  overflow: visible;
+  display: block;
+  font-size: 6rem;
+  fill: #ffffff;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1;
+}
